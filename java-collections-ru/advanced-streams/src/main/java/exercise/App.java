@@ -6,7 +6,6 @@ import java.util.Arrays;
 // BEGIN
 class App {
     public static void main(String[] args) {
-        
     }
 
     public static String getForwardedVariables(String data) {
