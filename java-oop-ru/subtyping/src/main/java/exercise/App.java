@@ -7,7 +7,7 @@ import java.util.Map;
 // BEGIN
 public class App {
     public static void main(String[] args) throws IOException {
-        /*
+
         Map<String, String> map = new HashMap<>();
         map.put("key", "10");
         map.put("key2", "20");
@@ -30,16 +30,21 @@ public class App {
             System.out.println(elem);
         }
 
-         */
 
-        KeyValueStorage storage = new FileKV("src/test/resources/file", Map.of("key", "value"));
+
+        /*
+
+      //  KeyValueStorage storage = new FileKV("src/test/resources/file", Map.of("key", "value"));
         // Получение значения по ключу
         System.out.println(storage.get("key", "default"));// "value"
         System.out.println(storage.get("key", "default"));// "value"
         storage.set("key2", "value3");
         storage.unset("key");
 
+         */
+
     }
+
 
     public static void swapKeyValue(KeyValueStorage storage) {
         Map<String, String> newMap = new HashMap<>();
