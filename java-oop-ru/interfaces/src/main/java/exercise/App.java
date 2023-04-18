@@ -2,6 +2,7 @@ package exercise;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,27 +35,41 @@ public class App {
         int length = text.length();
         String sub = text.subSequence(1, 4).toString();
 
-        System.out.println(text);
-        System.out.println(test);
-        System.out.println(length);
-        System.out.println(sub);
+        //   System.out.println(text);
+        //   System.out.println(test);
+        //   System.out.println(length);
+        //   System.out.println(sub);
 
 
     }
 
     public static List<String> buildApartmentsList(List<Home> homeList, int count) {
 
-        if (count > homeList.size()){
+        if (count > homeList.size()) {
             count = homeList.size();
         }
-        List<String> retApart = new ArrayList<>();
 
+
+        List<String> retApart;
+      //  List<Home> homes = new ArrayList<>();
+
+        retApart = Collections.singletonList(homeList.stream()
+                .sorted(Comparator.comparing(Home::getArea))
+
+                .limit(count)
+                .toList().toString());
+
+     //   System.out.println(homes);
+
+        /*
         Collections.sort(homeList);
         for (int i = 0; i < count; i++) {
             retApart.add(homeList.get(i).toString());
 
 
         }
+
+         */
         return retApart;
 
     }
