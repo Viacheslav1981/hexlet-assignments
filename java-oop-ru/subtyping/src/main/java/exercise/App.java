@@ -8,6 +8,7 @@ import java.util.Map;
 public class App {
     public static void main(String[] args) throws IOException {
 
+        /*
         Map<String, String> map = new HashMap<>();
         map.put("key", "10");
         map.put("key2", "20");
@@ -43,19 +44,37 @@ public class App {
 
          */
 
+
+        Map<String, String> map2 = new HashMap<>();
+        map2.put("bar", "zoo");
+        map2.put("foo", "bar");
+
+
+        KeyValueStorage storage2 = new InMemoryKV(map2);
+
+        swapKeyValue(storage2);
+
+        for (Map.Entry<String, String> elem : storage2.toMap().entrySet()) {
+            System.out.println(elem);
+        }
+
+        System.out.println(storage2.toMap());
+
+
     }
 
 
-    public static void swapKeyValue(KeyValueStorage storage) {
+    public static void swapKeyValue(KeyValueStorage storage) throws IOException {
         Map<String, String> newMap = new HashMap<>();
 
         for (Map.Entry<String, String> elem : storage.toMap().entrySet()) {
             String newKey = elem.getValue();
             String newValue = elem.getKey();
-            newMap.put(newKey, newValue);
+           // newMap.put(newKey, newValue);
+            storage.unset(elem.getKey());
+            storage.set(newKey, newValue);
         }
-        storage.toMap().clear();
-        storage.toMap().putAll(newMap);
+
     }
 }
 

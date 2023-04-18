@@ -2,12 +2,14 @@ package exercise;
 
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.IOException;
 import java.util.Map;
 
 
 class AppTest {
     @Test
-    void testSwapKV() {
+    void testSwapKV() throws IOException {
         KeyValueStorage storage = new InMemoryKV(Map.of("key", "value"));
         storage.set("key2", "value2");
         App.swapKeyValue(storage);
@@ -18,7 +20,7 @@ class AppTest {
     }
 
     @Test
-    void testSwapKV2() {
+    void testSwapKV2() throws IOException {
         KeyValueStorage storage = new InMemoryKV(Map.of("foo", "bar", "bar", "zoo"));
         App.swapKeyValue(storage);
         Map<String, String> expected = Map.of("bar", "foo", "zoo", "bar");
