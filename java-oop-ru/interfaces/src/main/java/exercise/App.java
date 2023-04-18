@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class App {
     public static void main(String[] args) {
@@ -50,26 +49,16 @@ public class App {
         }
 
 
-        List<String> retApart;
-      //  List<Home> homes = new ArrayList<>();
+        List<String> retApart = new ArrayList<>();
+        //  List<Home> homes = new ArrayList<>();
 
-        retApart = Collections.singletonList(homeList.stream()
-                .sorted(Comparator.comparing(Home::getArea))
 
-                .limit(count)
-                .toList().toString());
-
-     //   System.out.println(homes);
-
-        /*
         Collections.sort(homeList);
         for (int i = 0; i < count; i++) {
             retApart.add(homeList.get(i).toString());
-
-
         }
 
-         */
+
         return retApart;
 
     }
