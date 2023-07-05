@@ -1,0 +1,1 @@
+select top (3) first_name, birthday from users where birthday > '1999-23-10' order by firstname asc;
