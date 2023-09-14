@@ -14,7 +14,7 @@ public final class App {
         });
 
         // Описываем, что будет происходить при GET запросе на адрес /
-        app.get("/welcome", ctx -> ctx.result("Welcome to Hexlet!!"));
+        app.get("/welcome", ctx -> ctx.result("Welcome to Hexlet!"));
         return app;
 
     }
