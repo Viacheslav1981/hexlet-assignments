@@ -24,6 +24,15 @@ public class EditPostPage {
         this.post = post;
     }
 
+    public EditPostPage(Map<String, List<ValidationError<Object>>> errors) {
+        this.errors = errors;
+    }
+
+    public EditPostPage(Post post, Map<String, List<ValidationError<Object>>> errors) {
+        this.post = post;
+        this.errors = errors;
+    }
+
     public EditPostPage(String name, String body, Map<String, List<ValidationError<Object>>> errors) {
         this.name = name;
         this.body = body;

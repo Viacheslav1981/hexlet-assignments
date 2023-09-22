@@ -90,7 +90,14 @@ public class PostsController {
         } catch (ValidationException e) {
             var name = ctx.formParam("name");
             var body = ctx.formParam("body");
-            var page = new EditPostPage(name, body, e.getErrors());
+            var post = PostRepository.find(id)
+                    .orElseThrow(() -> new NotFoundResponse("Post not found"));
+         //   var page = new EditPostPage(name, body, e.getErrors());
+            post.setBody(body);
+            post.setName(name);
+            var page = new EditPostPage(post, e.getErrors());
+            PostRepository.clear();
+           // var page = new EditPostPage(e.getErrors());
             ctx.render("posts/edit.jte", Collections.singletonMap("page", page)).status(422);
         }
 
