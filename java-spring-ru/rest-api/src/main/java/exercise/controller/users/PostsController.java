@@ -31,12 +31,13 @@ public class PostsController {
 
     @PostMapping("/users/{id}/posts")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Post post, @PathVariable int id) {
+    public void create(@RequestBody Post post, @PathVariable String id) {
 
-        post.setBody(post.getBody());
         post.setSlug(post.getSlug());
         post.setTitle(post.getTitle());
-        post.setUserId(id);
+        post.setBody(post.getBody());
+
+        post.setUserId(Integer.parseInt(id));
 
         posts.add(post);
 

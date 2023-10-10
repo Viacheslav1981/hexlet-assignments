@@ -34,6 +34,8 @@ class ApplicationTest {
         post1.setTitle("another post");
         post1.setBody("body");
 
+        post1.setUserId(999);
+
         var request1 = post("/api/users/999/posts")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(om.writeValueAsString(post1));
