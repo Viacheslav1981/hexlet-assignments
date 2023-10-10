@@ -31,7 +31,7 @@ public class PostsController {
 
     @PostMapping("/users/{id}/posts")
     @ResponseStatus(HttpStatus.CREATED)
-    public void create(@RequestBody Post post, @PathVariable String id) {
+    public Post create(@RequestBody Post post, @PathVariable String id) {
 
         post.setSlug(post.getSlug());
         post.setTitle(post.getTitle());
@@ -40,6 +40,8 @@ public class PostsController {
         post.setUserId(Integer.parseInt(id));
 
         posts.add(post);
+
+        return post;
 
     }
 
