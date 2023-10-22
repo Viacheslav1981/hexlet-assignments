@@ -25,7 +25,7 @@ public class Application {
         LocalDateTime dateTime = LocalDateTime.now();
         int hour = dateTime.getHour();
 
-        if (hour > 12) {
+        if (hour >= 6 && hour < 22) {
             return new Day();
         } else {
             return new Night();
