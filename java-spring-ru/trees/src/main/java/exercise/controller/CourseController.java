@@ -34,25 +34,15 @@ public class CourseController {
         var course = courseRepository.findById(id);
         String path = course.getPath();
 
-        List<Course> courses = new ArrayList<>();
-
-      //  list.stream().forEach(x -> System.out.println(x));
-        
+        List<Course> courseList = new ArrayList<>();
 
         if (path != null) {
-            if (path.length() == 1) {
-                course = courseRepository.findById(Long.parseLong(path));
-                courses.add(course);
-            } else {
-                String[] parents = path.split("\\.");
-
-                for (String parent : parents) {
-                    course = courseRepository.findById(Long.parseLong(parent));
-                    courses.add(course);
-                }
-            }
+            courseList = Arrays.stream(path.split("\\."))
+                    .map(x -> courseRepository.findById(Long.parseLong(x)))
+                    .toList();
         }
-        return courses;
+
+        return courseList;
     }
 
 
