@@ -47,6 +47,7 @@ public class SecurityConfig {
                    //     .requestMatchers(mvcMatcherBuilder.pattern("/api/users/*")).permitAll()
                        // .requestMatchers(mvcMatcherBuilder.pattern("/")).permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern("/users")).permitAll()
+                        //.antMatchers(POST, "/users").permitAll()
                         .requestMatchers(mvcMatcherBuilder.pattern("/articles")).permitAll()
                       //  .requestMatchers(mvcMatcherBuilder.pattern("/users")).
                       //  .requestMatchers(mvcMatcherBuilder.pattern("/index.html")).permitAll()
